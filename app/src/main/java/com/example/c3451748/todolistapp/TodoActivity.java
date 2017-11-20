@@ -23,6 +23,15 @@ public class TodoActivity extends AppCompatActivity {
         return intent;
     }
 
+    /*
+    To decouple the fragment and make it reusable, the TodoFragment has a newInstance method
+    that receives a todoId and returns the fragment
+     */
+    protected Fragment createFragment(){
+        UUID todoId = (UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
+        return TodoFragment.newInstance(todoId);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +41,14 @@ public class TodoActivity extends AppCompatActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null){
-//            TodoFragment todoFragment = new TodoFragment();
-            Intent intent = getIntent();
-            UUID uuid = (UUID) (intent.getSerializableExtra(EXTRA_TODO_ID));
-            TodoFragment todoFragment = TodoFragment.newInstance(uuid);
+
+            Fragment todoFragment = createFragment();
+
             fm.beginTransaction()
                     .add(R.id.fragment_container, todoFragment)
                     .commit();
         }
 
     }
+
 }

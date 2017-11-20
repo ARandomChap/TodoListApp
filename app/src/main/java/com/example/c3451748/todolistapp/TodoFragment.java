@@ -30,12 +30,15 @@ public class TodoFragment extends Fragment {
     private Button mButtonDate;
     private CheckBox mCheckBoxIsComplete;
 
-
+    /*
+    Rather than the calling the constructor directly, Activity(s) should call newInstance
+    and pass required parameters that the fragment needs to create its arguments.
+     */
     public static TodoFragment newInstance(UUID todoId) {
-        TodoFragment fragment = new TodoFragment();
         Bundle args = new Bundle();
         args.putSerializable(ARG_TODO_ID, todoId);
 
+        TodoFragment fragment = new TodoFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -44,7 +47,26 @@ public class TodoFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
 
+        /*
+         Fragment accessing the intent from the hosting Activity as in the following code snippet
+         allows for simple code that works.
+
+        UUID todoId = (UUID) getActivity()
+                .getIntent().getSerializableExtra(TodoActivity.EXTRA_TODO_ID);
+
+         The disadvantage: TodoFragment is no longer reusable as it is coupled to Activities whoes
+         intent has to contain the todoId.
+
+         Solution: store the todoId in the fragment's arguments bundle.
+            See the TodoFragment newInstance(UUID todoId) method.
+
+         Then to create a new fragment, the TodoActivity should call TodoFragment.newInstance(UUID)
+         and pass in the UUID it retrieves from its extra argument.
+
+        */
+
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
+
         mTodo = TodoModel.get(getActivity()).getTodo(todoId);
 
     }

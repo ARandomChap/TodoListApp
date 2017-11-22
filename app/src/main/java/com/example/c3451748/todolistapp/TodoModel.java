@@ -27,7 +27,7 @@ public class TodoModel {
         // refactor to pattern for data plugins
         // simulate some data for testing
 
-        for (int i=0; i < 3; i++){
+        for (int i=0; i < 12; i++){
             Todo todo = new Todo();
             todo.setTitle("Todo title " + i);
             todo.setDetail("Detail for task " + todo.getId().toString());

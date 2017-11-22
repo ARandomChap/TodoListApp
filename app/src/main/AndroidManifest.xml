@@ -18,7 +18,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".TodoActivity">
+        <activity
+            android:name=".TodoActivity"
+            android:parentActivityName=".TodoListActivity">
         </activity>
 
     </application>

@@ -35,9 +35,13 @@ public class TodoFragment extends Fragment {
     and pass required parameters that the fragment needs to create its arguments.
      */
     public static TodoFragment newInstance(UUID todoId) {
+        
+//      putSerializable - Inserts a Serializable value into the mapping of this Bundle, 
+//      replacing any existing value for the given key
         Bundle args = new Bundle();
         args.putSerializable(ARG_TODO_ID, todoId);
 
+//      Creates a new fragment, and set the arguments for the fragment.
         TodoFragment fragment = new TodoFragment();
         fragment.setArguments(args);
         return fragment;

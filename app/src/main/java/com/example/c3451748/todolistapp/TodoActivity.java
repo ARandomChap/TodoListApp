@@ -28,7 +28,13 @@ public class TodoActivity extends AppCompatActivity {
     that receives a todoId and returns the fragment
      */
     protected Fragment createFragment(){
+//      getIntent() used to pass data to new activity.
+//      getSerializableExtra used to get serialized data from EXTRA_TODO_ID.
+//      Which is the value of item that was added with putExtra()^^^
         UUID todoId = (UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
+        
+//      To create a new fragment, call TodoFragment.newInstance(UUID)
+//      pass in the UUID retrieved from "extra argument":
         return TodoFragment.newInstance(todoId);
     }
 

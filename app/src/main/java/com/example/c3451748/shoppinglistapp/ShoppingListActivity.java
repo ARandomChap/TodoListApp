@@ -1,4 +1,4 @@
-package com.example.c3451748.todolistapp;
+package com.example.c3451748.shoppinglistapp;
 
 
 import android.os.Bundle;
@@ -6,7 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
-public class TodoListActivity extends AppCompatActivity {
+public class ShoppingListActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +17,7 @@ public class TodoListActivity extends AppCompatActivity {
         Fragment fragment = fm.findFragmentById(R.id.fragment_container);
 
         if (fragment == null){
-            TodoListFragment todoListFragment = new TodoListFragment();
+            ShoppingListFragment todoListFragment = new ShoppingListFragment();
             fm.beginTransaction()
                     .add(R.id.fragment_container, todoListFragment)
                     .commit();

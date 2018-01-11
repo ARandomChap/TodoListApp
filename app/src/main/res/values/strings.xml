@@ -1,10 +1,11 @@
 <resources>
-    <string name="app_name">TodoListApp</string>
-    <string name="todo_title">todo title</string>
-    <string name="todo_title_hint">todo title hint</string>
-    <string name="todo_title_label">One line description of the todo</string>
-    <string name="todo_detail_label">detail of what to do</string>
-    <string name="todo_complete_label">is it complete?</string>
-    <string name="todo_date">Todo date</string>
-    <string name="new_todo">New Todo</string>
+    <string name="app_name">Shopping List</string>
+    <string name="shopping_title">Item title</string>
+    <string name="shopping_title_hint">Item title hint</string>
+    <string name="shopping_title_label">One line description of the item</string>
+    <string name="shopping_detail_label">Details</string>
+    <string name="shopping_complete_label">Is it complete?</string>
+    <string name="shopping_date">Shopping date</string>
+    <string name="new_item">New Item</string>
+    <string name="delete_item">Delete</string>
 </resources>

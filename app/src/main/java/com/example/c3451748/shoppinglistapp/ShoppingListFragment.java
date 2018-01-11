@@ -1,4 +1,4 @@
-package com.example.c3451748.todolistapp;
+package com.example.c3451748.shoppinglistapp;
 
 /**
  * Created by c3451748 on 17/11/2017.
@@ -21,7 +21,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-public class TodoListFragment extends Fragment {
+public class ShoppingListFragment extends Fragment {
 
     private RecyclerView mTodoRecyclerView;
     TodoAdapter mTodoAdapter;
@@ -40,7 +40,7 @@ public class TodoListFragment extends Fragment {
                              ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_todo_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_shopping_list, container, false);
 
         mTodoRecyclerView = (RecyclerView) view.findViewById(R.id.todo_recycler_view);
         mTodoRecyclerView.setLayoutManager( new LinearLayoutManager(getActivity()) );
@@ -54,7 +54,7 @@ public class TodoListFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_todo_list, menu);
+        inflater.inflate(R.menu.fragment_shopping_list, menu);
     }
 
     @Override
@@ -62,10 +62,10 @@ public class TodoListFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.new_todo:
 
-                Todo todo = new Todo();
-                TodoModel.get(getActivity()).addTodo(todo);
+                Shopping todo = new Shopping();
+                ShoppingModel.get(getActivity()).addTodo(todo);
 
-                Intent intent = TodoActivity.newIntent(getActivity(), todo.getId());
+                Intent intent = ShoppingActivity.newIntent(getActivity(), todo.getId());
                 startActivity(intent);
 
                 return true;
@@ -85,7 +85,7 @@ public class TodoListFragment extends Fragment {
     private void updateUI(){
 
         ArrayList todos = new ArrayList<>();
-        TodoModel todoModel = TodoModel.get(getContext());
+        ShoppingModel todoModel = ShoppingModel.get(getContext());
         todos = todoModel.getTodos();
 
         if (mTodoAdapter == null) {
@@ -100,13 +100,13 @@ public class TodoListFragment extends Fragment {
     public class TodoHolder extends RecyclerView.ViewHolder
             implements View.OnClickListener {
 
-        private Todo mTodo;
+        private Shopping mTodo;
         private TextView mTextViewTitle;
         private TextView mTextViewDate;
 
         public TodoHolder(LayoutInflater inflater, ViewGroup parent) {
 
-            super(inflater.inflate(R.layout.list_item_todo, parent, false));
+            super(inflater.inflate(R.layout.list_item_shopping, parent, false));
 
             itemView.setOnClickListener(this);
 
@@ -124,12 +124,12 @@ public class TodoListFragment extends Fragment {
                     Toast.LENGTH_SHORT)
                     .show();
 
-            Intent intent = TodoPagerActivity.newIntent(getActivity(), mTodo.getId());
+            Intent intent = ShoppingPagerActivity.newIntent(getActivity(), mTodo.getId());
             startActivity(intent);
 
         }
 
-        public void bind(Todo todo){
+        public void bind(Shopping todo){
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
             mTextViewDate.setText(mTodo.getDate().toString());
@@ -137,16 +137,16 @@ public class TodoListFragment extends Fragment {
 
     }
 
-    public class TodoAdapter extends RecyclerView.Adapter<TodoListFragment.TodoHolder> {
+    public class TodoAdapter extends RecyclerView.Adapter<ShoppingListFragment.TodoHolder> {
 
-        private List<Todo> mTodos;
+        private List<Shopping> mTodos;
 
-        public TodoAdapter(List<Todo> todos) {
+        public TodoAdapter(List<Shopping> todos) {
             mTodos = todos;
         }
 
         @Override
-        public TodoListFragment.TodoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        public ShoppingListFragment.TodoHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             LayoutInflater layoutInflater = LayoutInflater.from(getActivity());
 
             return new TodoHolder(layoutInflater, parent);
@@ -154,7 +154,7 @@ public class TodoListFragment extends Fragment {
 
         @Override
         public void onBindViewHolder(TodoHolder holder, int position) {
-            Todo todo = mTodos.get(position);
+            Shopping todo = mTodos.get(position);
             holder.bind(todo);
         }
 

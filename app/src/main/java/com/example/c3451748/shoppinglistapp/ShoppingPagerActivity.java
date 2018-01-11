@@ -1,4 +1,4 @@
-package com.example.c3451748.todolistapp;
+package com.example.c3451748.shoppinglistapp;
 
 import android.content.Context;
 import android.content.Intent;
@@ -13,14 +13,14 @@ import android.support.v7.app.AppCompatActivity;
 import java.util.List;
 import java.util.UUID;
 
-public class TodoPagerActivity extends AppCompatActivity {
+public class ShoppingPagerActivity extends AppCompatActivity implements ShoppingFragment.TodoFragmentAction{
     private static final String EXTRA_TODO_ID = "todo_id";
 
     private ViewPager mViewPager;
-    private List<Todo> mTodos;
+    private List<Shopping> mTodos;
 
     public static Intent newIntent(Context packageContext, UUID todoId){
-        Intent intent = new Intent(packageContext, TodoPagerActivity.class);
+        Intent intent = new Intent(packageContext, ShoppingPagerActivity.class);
         intent.putExtra(EXTRA_TODO_ID, todoId);
         return intent;
     }
@@ -28,18 +28,18 @@ public class TodoPagerActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_todo_pager);
+        setContentView(R.layout.activity_shopping_pager);
 
         UUID todoId = (UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
         mViewPager = (ViewPager) findViewById(R.id.todo_view_pager);
-        mTodos = TodoModel.get(this).getTodos();
+        mTodos = ShoppingModel.get(this).getTodos();
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         mViewPager.setAdapter(new FragmentStatePagerAdapter(fragmentManager) {
             @Override
             public Fragment getItem(int position) {
-                Todo todo = mTodos.get(position);
-                return TodoFragment.newInstance(todo.getId());
+                Shopping todo = mTodos.get(position);
+                return ShoppingFragment.newInstance(todo.getId());
             }
 
             @Override
@@ -54,5 +54,9 @@ public class TodoPagerActivity extends AppCompatActivity {
                 break;
             }
         }
+    }
+
+    public void onDeleted(){
+        onBackPressed();
     }
 }

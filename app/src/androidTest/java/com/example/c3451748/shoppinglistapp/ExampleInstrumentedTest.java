@@ -1,4 +1,4 @@
-package com.example.c3451748.todolistapp;
+package com.example.c3451748.shoppinglistapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

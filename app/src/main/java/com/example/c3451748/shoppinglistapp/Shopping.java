@@ -2,6 +2,7 @@ package com.example.c3451748.shoppinglistapp;
 
 import java.util.Date;
 import java.util.UUID;
+import java.text.*;
 
 /**
  * Created by c3451748 on 17/11/2017.
@@ -13,12 +14,16 @@ public class Shopping {
     private UUID mId;
     private String mTitle;
     private String mDetail;
-    private Date mDate;
+    private String mDate;
     private boolean mIsComplete;
 
     public Shopping() {
         mId = UUID.randomUUID();
-        mDate = new Date();
+        Date date = new Date();
+
+        SimpleDateFormat f = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+
+        mDate = "Created at: " + f.format(date);
     }
 
     public UUID getId() {
@@ -45,11 +50,11 @@ public class Shopping {
         this.mDetail = mDetail;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return mDate;
     }
 
-    public void setDate(Date mDate) {
+    public void setDate(String mDate) {
         this.mDate = mDate;
     }
 

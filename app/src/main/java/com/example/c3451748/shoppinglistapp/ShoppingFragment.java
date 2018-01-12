@@ -32,6 +32,7 @@ public class ShoppingFragment extends Fragment {
 
     private Shopping mTodo;
     private EditText mEditTextTitle;
+    private EditText mEditTextDetail;
     private Button mButtonDate;
     private CheckBox mCheckBoxIsComplete;
 
@@ -114,16 +115,35 @@ public class ShoppingFragment extends Fragment {
             }
         });
 
-        mButtonDate = (Button) view.findViewById(R.id.todo_date);
-        mButtonDate.setText(mTodo.getDate().toString());
-        mButtonDate.setEnabled(false);
+        mEditTextDetail = (EditText) view.findViewById(R.id.todo_detail);
+        mEditTextDetail.setText(mTodo.getDetail());
+        mEditTextDetail.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                // This line is intentionally left blank
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                mTodo.setDetail(s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                // This line is intentionally left blank
+            }
+        });
+
+//        mButtonDate = (Button) view.findViewById(R.id.todo_date);
+//        mButtonDate.setText(mTodo.getDate().toString());
+//        mButtonDate.setEnabled(false);
 
         mCheckBoxIsComplete = (CheckBox) view.findViewById(R.id.todo_complete);
         mCheckBoxIsComplete.setChecked(mTodo.isComplete());
         mCheckBoxIsComplete.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.d("DEBUG **** ShoppingFragment","called onCheckedChanged");
+//                Log.d("DEBUG **** ShoppingFragment","called onCheckedChanged");
                 mTodo.setComplete(isChecked);
             }
         });
@@ -132,6 +152,7 @@ public class ShoppingFragment extends Fragment {
 
     }
 
+//  This is needed in order to create the callback to onBackPressed automatically when delete is pressed.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

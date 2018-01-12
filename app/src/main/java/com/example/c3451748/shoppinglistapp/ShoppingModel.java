@@ -30,7 +30,8 @@ public class ShoppingModel {
         for (int i=0; i < 5; i++){
             Shopping todo = new Shopping();
             todo.setTitle("Shopping item " + i);
-            todo.setDetail("Detail for task " + todo.getId().toString());
+            todo.setDetail("Detail for task");
+//                    + todo.getId().toString());
             todo.setComplete(false);
 
             mTodoList.add(todo);

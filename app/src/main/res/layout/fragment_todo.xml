@@ -10,25 +10,29 @@
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/shopping_title_label"/>
+        android:layout_margin="8dp"
+        android:text="@string/todo_title_label"/>
 
     <EditText
         android:id="@+id/todo_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="@string/shopping_title_hint"/>
+        android:layout_margin="8dp"
+        android:hint="@string/todo_title_hint"/>
 
     <TextView
         android:id="@+id/textView"
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
         android:layout_height="@android:dimen/notification_large_icon_height"
-        android:text="@string/shopping_detail_label" />
+        android:layout_margin="8dp"
+        android:text="@string/todo_detail_label" />
 
     <EditText
         android:id="@+id/todo_detail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="8dp"
         android:hint="Hint..."/>
 
     <!--<Button-->
@@ -41,6 +45,7 @@
         android:id="@+id/todo_complete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/shopping_complete_label"/>
+        android:layout_margin="8dp"
+        android:text="@string/todo_complete_label"/>
 
 </LinearLayout>

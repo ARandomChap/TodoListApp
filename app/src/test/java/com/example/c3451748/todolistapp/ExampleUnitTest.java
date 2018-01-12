@@ -1,4 +1,4 @@
-package com.example.c3451748.shoppinglistapp;
+package com.example.c3451748.todolistapp;
 
 import org.junit.Test;
 

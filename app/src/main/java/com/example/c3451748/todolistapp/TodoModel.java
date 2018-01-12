@@ -1,4 +1,4 @@
-package com.example.c3451748.shoppinglistapp;
+package com.example.c3451748.todolistapp;
 
 /**
  * Created by c3451748 on 17/11/2017.
@@ -8,29 +8,29 @@ import android.content.Context;
 import java.util.ArrayList;
 import java.util.UUID;
 
-public class ShoppingModel {
+public class TodoModel {
 
-    private static ShoppingModel sTodoModel;
+    private static TodoModel sTodoModel;
 
-    private ArrayList<Shopping> mTodoList;
+    private ArrayList<Todo> mTodoList;
 
-    public static ShoppingModel get(Context context) {
+    public static TodoModel get(Context context) {
         if (sTodoModel == null) {
-            sTodoModel = new ShoppingModel(context);
+            sTodoModel = new TodoModel(context);
         }
         return sTodoModel;
     }
 
-    private ShoppingModel(Context context){
+    private TodoModel(Context context){
         mTodoList = new ArrayList<>();
 
         // refactor to pattern for data plugins
         // simulate some data for testing
 
         for (int i=0; i < 5; i++){
-            Shopping todo = new Shopping();
-            todo.setTitle("Shopping item " + i);
-            todo.setDetail("Detail for task");
+            Todo todo = new Todo();
+            todo.setTitle("Todo item " + i);
+            todo.setDetail("Detail for task " + i);
 //                    + todo.getId().toString());
             todo.setComplete(false);
 
@@ -39,9 +39,9 @@ public class ShoppingModel {
 
     }
 
-    public Shopping getTodo(UUID todoId) {
+    public Todo getTodo(UUID todoId) {
 
-        for (Shopping todo : mTodoList) {
+        for (Todo todo : mTodoList) {
             if (todo.getId().equals(todoId)){
                 return todo;
             }
@@ -50,19 +50,19 @@ public class ShoppingModel {
         return null;
     }
 
-    public ArrayList<Shopping> getTodos() {
+    public ArrayList<Todo> getTodos() {
 
         return mTodoList;
 
     }
 
-    public void addTodo(Shopping todo){
+    public void addTodo(Todo todo){
 
         mTodoList.add(todo);
 
     }
 
-    public void deleteTodo(Shopping todo){
+    public void deleteTodo(Todo todo){
         mTodoList.remove(todo);
     }
 

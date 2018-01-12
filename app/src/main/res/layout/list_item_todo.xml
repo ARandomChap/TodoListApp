@@ -15,13 +15,13 @@
             android:id="@+id/todo_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/shopping_title"/>
+            android:text="@string/todo_title"/>
 
         <TextView xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/todo_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/shopping_date"/>
+            android:text="@string/todo_date"/>
 
     </LinearLayout>
 </android.support.v7.widget.CardView>

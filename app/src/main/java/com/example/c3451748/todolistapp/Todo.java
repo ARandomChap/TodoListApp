@@ -1,4 +1,4 @@
-package com.example.c3451748.shoppinglistapp;
+package com.example.c3451748.todolistapp;
 
 import java.util.Date;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import java.text.*;
  * Created by c3451748 on 17/11/2017.
  */
 
-public class Shopping {
+public class Todo {
 
 
     private UUID mId;
@@ -17,7 +17,7 @@ public class Shopping {
     private String mDate;
     private boolean mIsComplete;
 
-    public Shopping() {
+    public Todo() {
         mId = UUID.randomUUID();
         Date date = new Date();
 

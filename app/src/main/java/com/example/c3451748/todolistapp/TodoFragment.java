@@ -1,4 +1,4 @@
-package com.example.c3451748.shoppinglistapp;
+package com.example.c3451748.todolistapp;
 
 /**
  * Created by c3451748 on 17/11/2017.
@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -26,11 +25,11 @@ import android.widget.Toast;
 
 import java.util.UUID;
 
-public class ShoppingFragment extends Fragment {
+public class TodoFragment extends Fragment {
 
     private static final String ARG_TODO_ID = "todo_id";
 
-    private Shopping mTodo;
+    private Todo mTodo;
     private EditText mEditTextTitle;
     private EditText mEditTextDetail;
     private Button mButtonDate;
@@ -46,7 +45,7 @@ public class ShoppingFragment extends Fragment {
     Rather than the calling the constructor directly, Activity(s) should call newInstance
     and pass required parameters that the fragment needs to create its arguments.
      */
-    public static ShoppingFragment newInstance(UUID todoId) {
+    public static TodoFragment newInstance(UUID todoId) {
         
 //      putSerializable - Inserts a Serializable value into the mapping of this Bundle, 
 //      replacing any existing value for the given key
@@ -54,7 +53,7 @@ public class ShoppingFragment extends Fragment {
         args.putSerializable(ARG_TODO_ID, todoId);
 
 //      Creates a new fragment, and set the arguments for the fragment.
-        ShoppingFragment fragment = new ShoppingFragment();
+        TodoFragment fragment = new TodoFragment();
         fragment.setArguments(args);
         return fragment;
     }
@@ -68,22 +67,22 @@ public class ShoppingFragment extends Fragment {
          allows for simple code that works.
 
         UUID todoId = (UUID) getActivity()
-                .getIntent().getSerializableExtra(ShoppingActivity.EXTRA_TODO_ID);
+                .getIntent().getSerializableExtra(TodoActivity.EXTRA_TODO_ID);
 
-         The disadvantage: ShoppingFragment is no longer reusable as it is coupled to Activities whoes
+         The disadvantage: TodoFragment is no longer reusable as it is coupled to Activities whoes
          intent has to contain the todoId.
 
          Solution: store the todoId in the fragment's arguments bundle.
-            See the ShoppingFragment newInstance(UUID todoId) method.
+            See the TodoFragment newInstance(UUID todoId) method.
 
-         Then to create a new fragment, the ShoppingActivity should call ShoppingFragment.newInstance(UUID)
+         Then to create a new fragment, the TodoActivity should call TodoFragment.newInstance(UUID)
          and pass in the UUID it retrieves from its extra argument.
 
         */
 
         UUID todoId = (UUID) getArguments().getSerializable(ARG_TODO_ID);
 
-        mTodo = ShoppingModel.get(getActivity()).getTodo(todoId);
+        mTodo = TodoModel.get(getActivity()).getTodo(todoId);
 
         setHasOptionsMenu(true);
     }
@@ -94,7 +93,7 @@ public class ShoppingFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_shopping, container, false);
+        View view = inflater.inflate(R.layout.fragment_todo, container, false);
 
         mEditTextTitle = (EditText) view.findViewById(R.id.todo_title);
         mEditTextTitle.setText(mTodo.getTitle());
@@ -143,7 +142,7 @@ public class ShoppingFragment extends Fragment {
         mCheckBoxIsComplete.setOnCheckedChangeListener(new OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-//                Log.d("DEBUG **** ShoppingFragment","called onCheckedChanged");
+//                Log.d("DEBUG **** TodoFragment","called onCheckedChanged");
                 mTodo.setComplete(isChecked);
             }
         });
@@ -166,7 +165,7 @@ public class ShoppingFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.fragment_shopping_delete, menu);
+        inflater.inflate(R.menu.fragment_todo_delete, menu);
     }
 
     @Override
@@ -174,7 +173,7 @@ public class ShoppingFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.delete:
 
-                ShoppingModel.get(getActivity()).deleteTodo(mTodo);
+                TodoModel.get(getActivity()).deleteTodo(mTodo);
 
                 Toast.makeText(
                         getActivity(),

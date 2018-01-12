@@ -1,4 +1,4 @@
-package com.example.c3451748.shoppinglistapp;
+package com.example.c3451748.todolistapp;
 
 /**
  * Created by c3451748 on 17/11/2017.
@@ -13,18 +13,18 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.util.UUID;
 
-public class ShoppingActivity extends AppCompatActivity implements ShoppingFragment.TodoFragmentAction{
+public class TodoActivity extends AppCompatActivity implements TodoFragment.TodoFragmentAction{
 
     public static final String EXTRA_TODO_ID = "todo_id";
 
     public static Intent newIntent(Context packageContext, UUID todoId) {
-        Intent intent = new Intent(packageContext, ShoppingActivity.class);
+        Intent intent = new Intent(packageContext, TodoActivity.class);
         intent.putExtra(EXTRA_TODO_ID, todoId);
         return intent;
     }
 
     /*
-    To decouple the fragment and make it reusable, the ShoppingFragment has a newInstance method
+    To decouple the fragment and make it reusable, the TodoFragment has a newInstance method
     that receives a todoId and returns the fragment
      */
     protected Fragment createFragment(){
@@ -33,9 +33,9 @@ public class ShoppingActivity extends AppCompatActivity implements ShoppingFragm
 //      Which is the value of item that was added with putExtra()^^^
         UUID todoId = (UUID) getIntent().getSerializableExtra(EXTRA_TODO_ID);
         
-//      To create a new fragment, call ShoppingFragment.newInstance(UUID)
+//      To create a new fragment, call TodoFragment.newInstance(UUID)
 //      pass in the UUID retrieved from "extra argument":
-        return ShoppingFragment.newInstance(todoId);
+        return TodoFragment.newInstance(todoId);
     }
 
     @Override

@@ -25,11 +25,31 @@
         android:layout_height="@android:dimen/notification_large_icon_height"
         android:text="@string/shopping_detail_label" />
 
-    <EditText
-        android:id="@+id/todo_detail"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/card_view"
+        android:layout_margin="4dp"
         android:layout_height="wrap_content"
-        android:hint="Hint..."/>
+        android:layout_width="match_parent" >
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/todo_detail_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shopping_title"/>
+
+            <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/todo_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/shopping_date"/>
+
+    </android.support.v7.widget.CardView>
+
+    <!--<EditText-->
+        <!--android:id="@+id/todo_detail"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:hint="Hint..."/>-->
 
     <!--<Button-->
         <!--android:id="@+id/todo_date"-->
@@ -42,5 +62,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/shopping_complete_label"/>
+
+
 
 </LinearLayout>

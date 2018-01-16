@@ -103,6 +103,7 @@ public class TodoListFragment extends Fragment {
         private Todo mTodo;
         private TextView mTextViewTitle;
         private TextView mTextViewDate;
+        private TextView mTextTick;
 
         public TodoHolder(LayoutInflater inflater, ViewGroup parent) {
 
@@ -112,6 +113,7 @@ public class TodoListFragment extends Fragment {
 
             mTextViewTitle = (TextView) itemView.findViewById(R.id.todo_title);
             mTextViewDate = (TextView) itemView.findViewById(R.id.todo_date);
+            mTextTick = (TextView) itemView.findViewById(R.id.todo_tick);
 
         }
 
@@ -133,6 +135,9 @@ public class TodoListFragment extends Fragment {
             mTodo = todo;
             mTextViewTitle.setText(mTodo.getTitle());
             mTextViewDate.setText(mTodo.getDate().toString());
+            if (todo.isComplete()){
+                mTextTick.setText("\u2713");}
+            else{mTextTick.setText("");}
         }
 
     }

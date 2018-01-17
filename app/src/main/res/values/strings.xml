@@ -8,5 +8,6 @@
     <string name="todo_date">Date</string>
     <string name="new_item">New</string>
     <string name="delete_item">Delete</string>
+    <string name="search_item">Search</string>
 
 </resources>

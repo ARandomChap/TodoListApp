@@ -4,7 +4,10 @@ package com.example.c3451748.todolistapp;
  * Created by c3451748 on 17/11/2017.
  */
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -165,6 +168,7 @@ public class TodoFragment extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater){
         super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.fragment_todo_search, menu);
         inflater.inflate(R.menu.fragment_todo_delete, menu);
     }
 
@@ -181,9 +185,18 @@ public class TodoFragment extends Fragment {
                         Toast.LENGTH_SHORT)
                         .show();
 
+//                getActivity().finish();
+
                 mCallback.onDeleted();
 
                 return true;
+
+            case R.id.search:
+
+                Intent search = new Intent(Intent.ACTION_WEB_SEARCH);
+                search.putExtra(SearchManager.QUERY, mTodo.getTitle());
+                startActivity(search);
+
 
             default:
                 return super.onOptionsItemSelected(item);

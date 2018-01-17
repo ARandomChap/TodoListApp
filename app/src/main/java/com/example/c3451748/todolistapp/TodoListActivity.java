@@ -22,6 +22,5 @@ public class TodoListActivity extends AppCompatActivity {
                     .add(R.id.fragment_container, todoListFragment)
                     .commit();
         }
-
     }
 }

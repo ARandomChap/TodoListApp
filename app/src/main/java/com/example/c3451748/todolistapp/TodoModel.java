@@ -34,6 +34,10 @@ public class TodoModel {
 //                    + todo.getId().toString());
             todo.setComplete(false);
 
+            if(i==3){
+                todo.setComplete(true);
+            }
+
             mTodoList.add(todo);
         }
 

@@ -62,9 +62,12 @@ public class TodoListFragment extends Fragment {
         switch (item.getItemId()){
             case R.id.new_todo:
 
+                //new Todo is created and added to the arraylist through TodelModel
                 Todo todo = new Todo();
                 TodoModel.get(getActivity()).addTodo(todo);
 
+                //Intent is created and passed to startActivity.
+                //new Intent is called in TodoActivity, getActivity( THE ACTIVITY OF THE FRAGMENT ) is used as Context, todoId is used as UUID.
                 Intent intent = TodoActivity.newIntent(getActivity(), todo.getId());
                 startActivity(intent);
 
@@ -105,6 +108,7 @@ public class TodoListFragment extends Fragment {
         private TextView mTextViewDate;
         private TextView mTextTick;
 
+//      takes in the id of a layout and returns a view
         public TodoHolder(LayoutInflater inflater, ViewGroup parent) {
 
             super(inflater.inflate(R.layout.list_item_todo, parent, false));
@@ -142,6 +146,8 @@ public class TodoListFragment extends Fragment {
 
     }
 
+//  Adapter: A subclass of RecyclerView.Adapter responsible for providing views that represent items in a data set.
+//  gets the data from the data source and passes it to the recycle view
     public class TodoAdapter extends RecyclerView.Adapter<TodoListFragment.TodoHolder> {
 
         private List<Todo> mTodos;

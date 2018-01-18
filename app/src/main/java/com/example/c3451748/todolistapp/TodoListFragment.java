@@ -140,7 +140,9 @@ public class TodoListFragment extends Fragment {
             mTextViewTitle.setText(mTodo.getTitle());
             mTextViewDate.setText(mTodo.getDate().toString());
             if (todo.isComplete()){
-                mTextTick.setText("\u2713");}
+                mTextTick.setText("\u2713");
+                mTextTick.setTextSize(22);
+            }
             else{mTextTick.setText("");}
         }
 

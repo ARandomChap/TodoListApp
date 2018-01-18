@@ -155,6 +155,8 @@ public class TodoFragment extends Fragment {
     }
 
 //  This is needed in order to create the callback to onBackPressed automatically when delete is pressed.
+//  OnAttach allows the fragment to be attached to the Parent Activities lifeCycle during creation.
+//  When it is destroyed so is the fragment, ensuring the views are up to date.
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
